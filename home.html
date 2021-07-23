@@ -1,0 +1,508 @@
+<!Doctype html>
+<html>
+
+<head>
+    <title>Covid 19 Tracker</title>
+    <!-- linking css file-->
+    <link rel="stylesheet" href="style.css">
+    <!-- Linking bootstrap 4.5-->
+    <!-- picahrt js link-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+    <!-- mapbox link-->
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.11.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.11.1/mapbox-gl.css' rel='stylesheet' />
+
+
+
+</head>
+
+<body class="body">
+
+
+
+
+    <div class="body2">
+
+        <!--
+    <div class="jumbotron">
+        <div class="container">
+  <h3>Covid 19 Live Tracker</h3>
+
+        </div>
+</div>
+    <-->
+
+
+        <nav>
+            <input type="checkbox" id="check">
+            <label for="check" class="checkbtn">
+                <i class="fas fa-bars"></i>
+            </label>
+            <label class="logo">COVID-19 Live Tracker</label>
+            <ul>
+                <li><a class="active1" href="home.html">Home</a></li>
+                <li><a class="active2" href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public">Precausions</a></li>
+                <li><a class="active3" href="./About us/index.html">About us</a></li>
+                <li><a class="active4" href="#">Share</a></li>
+
+            </ul>
+        </nav>
+
+        <div class="kgf">
+            <div class="textonkgf">
+                <h2>INDIA's Live Report:-</h2>
+                <h4>Last updated on:-"<strong class="update"> </strong>"</h4>
+
+
+
+            </div>
+
+            <div class="kgfimage">
+                <img class="kgfimage" src="images/man-woman-doctors-fighting-with-coronavirus-using-vaccine-injection-bow-prick-virologists-uniform-protecting-people-from-covid-19-corona-virus-concept-research-process-illustration_88272-1396.jpg">
+            </div>
+
+
+
+
+
+
+        </div>
+
+        <div class="kgf2">
+            <div class="piechart"><canvas id="myChart"></canvas>INDIAN COVID-19 CHART </div>
+
+            <div class="linechart">
+                <canvas id="mylinechart"></canvas>
+                GLOBAL COVID-19 CHART
+            </div>
+
+            <span>
+                <div class="datainfo">
+
+                    <div class="con">
+                        <div class="con1">Confirmed: <strong id="confirmed"></strong></div>
+                    </div>
+                    <div class="reco">
+                        <div class="reco1">Recovered: <strong id="recovered"></strong></div>
+                    </div>
+                    <div class="de">
+                        <div class="de1">Deaths: <strong id="deaths"></strong></div>
+                    </div>
+
+                </div>
+            </span>
+
+        </div>
+
+        <div class="kgf3">
+            <div class="kgf3image">
+                <img src="images/doctor-surgery-suit-mask-with-stethoscope_77313-324.jpg" width="225px" height="300px">
+
+            </div>
+
+            <div class="tempcheck">
+                <div class="covidcheck">
+                    <h2>Check your <strong class="str">COVID-19</strong> status</h2>
+                </div>
+                <div class="input">
+                    <input type="text" placeholder="Enter your body temparature in ℃" id="userinput">
+                    <button id="clicked">Check</button>
+                </div>
+
+                <div class="stat">
+                    <div class="stat1">
+                        <h2>Status: <strong id="stat1"></strong></h2>
+                    </div>
+
+                    <div class="stat2">
+                        <h2>Precautions: <a href="danger.html"><strong id="stat2"></strong></a></h2>
+                    </div>
+
+                </div>
+                <button id="clear">reCheck</button>
+
+            </div>
+
+        </div>
+
+        <!--
+        <input id="input1" type="text" placeholder="enter state">
+        <button id="search">search</button>
+        <br><br>
+
+        <-->
+
+
+        <h2 class="gkl">Live Data:-</h2>
+        <div id="selectmenu">
+            <select id="select1">
+                <option value="" selected disabled>select your state:-</option>
+                <option value="1">Maharashtra</option>
+                <option value="2">West Bengal</option>
+                <option value="3">Tamil Nadu</option>
+                <option value="4">Delhi</option>
+                <option value="5">Karnataka</option>
+                <option value="6">Andhra Pradesh</option>
+                <option value="7">Uttar Pradesh</option>
+                <option value="8">Gujarat</option>
+                <option value="9">Telangana</option>
+                <option value="10">Rajasthan</option>
+                <option value="11">Assam</option>
+                <option value="12">Odisha</option>
+                <option value="13">Haryana</option>
+                <option value="14">Madhya Pradesh</option>
+                <option value="15">Kerala</option>
+                <option value="16">Punjab</option>
+                <option value="17">Jammu and Kashmir</option>
+                <option value="18">Jharkhand</option>
+                <option value="19">Chhattisgarh</option>
+                <option value="20">Uttarakhand</option>
+                <option value="21">Goa</option>
+                <option value="22">Tripura</option>
+                <option value="23">Puducherry</option>
+                <option value="24">Manipur</option>
+                <option value="25">Himachal Pradesh</option>
+                <option value="26">Nagaland</option>
+                <option value="27">Arunachal Pradesh</option>
+                <option value="28">Andaman and Nicobar Islands</option>
+                <option value="29">Ladakh</option>
+                <option value="30">Chandigarh</option>
+
+                <option value="32">Meghalaya</option>
+                <option value="33">Sikkim</option>
+                <option value="34">Mizoram</option>
+                <option value="35">Lakshadweep</option>
+                <option value="36">Bihar</option>
+            </select>
+
+        </div>
+
+        <div id='livedata'>
+
+
+
+            <div id="map1">
+                <div id='map' style='width: 700px; height: 600px;'></div>
+            </div>
+
+
+
+            <div class="datainfo1">
+                <div class="area1">
+                    <div class="area2">Area: <strong class="state1"></strong></div>
+                </div>
+
+
+                <div class="con3">
+                    <div class="con2">Confirmed: <strong id="confirmed1"></strong></div>
+                </div>
+                <div class="reco3">
+                    <div class="reco2">Recovered: <strong id="recovered1"></strong></div>
+                </div>
+                <div class="de3">
+                    <div class="de2">Deaths: <strong id="deaths1"></strong></div>
+                </div>
+
+            </div>
+
+
+
+
+
+        </div>
+    </div>
+
+    <!--
+    <style>
+    
+        #map1{
+            margin-top:100px;
+            margin-left:450px;
+            margin-right:250px;
+            padding:50px;
+        }
+    
+    </style>
+
+
+-->
+
+
+    <div class="linechart1">
+        <canvas id="mylinechart1"></canvas>
+    </div>
+
+
+</body>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!--CDN-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"> </script>
+<script src="function.js"></script>
+
+
+<!--map-->
+<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.min.js"></script>
+<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.css" type="text/css" />
+<!-- Promise polyfill script required to use Mapbox GL Geocoder in IE 11 -->
+<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
+<script>
+    mapboxgl.accessToken = 'pk.eyJ1Ijoic3VqYW5jaGFrcmFib3J0eSIsImEiOiJja2Q5MzBuc3owenplMnBzY2I0eDYwdDhvIn0.imItePLDlYNF2BGVde_mkw';
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/dark-v10',
+        center: [78.962883, 20.5936832],
+        zoom: 3.6
+    });
+
+    map.addControl(
+        new MapboxGeocoder({
+            accessToken: mapboxgl.accessToken,
+            mapboxgl: mapboxgl
+        })
+
+    );
+
+    var marker = new mapboxgl.Marker({
+            color: "#e60000"
+        })
+        .setLngLat([78.962883, 20.5936832])
+        .addTo(map);
+
+
+    var marker1 = new mapboxgl.Marker({
+            color: "#e60000"
+        })
+        .setLngLat([75.300293, 19.663280])
+        .addTo(map);
+
+
+    var marker = new mapboxgl.Marker({
+            color: "#e60000"
+        })
+        .setLngLat([78.656891, 11.127123])
+        .addTo(map);
+
+    var marker = new mapboxgl.Marker({
+            color: "#e60000"
+        })
+        .setLngLat([77.216721, 28.644800])
+        .addTo(map);
+
+
+    var marker = new mapboxgl.Marker({
+            color: "#e60000"
+        })
+        .setLngLat([75.713890, 15.317277])
+        .addTo(map);
+
+    var marker = new mapboxgl.Marker({
+            color: "#e60000"
+        })
+        .setLngLat([78.476, 17.366])
+        .addTo(map);
+
+    var marker = new mapboxgl.Marker({
+            color: "#e60000"
+        })
+        .setLngLat([79.826660, 28.207609])
+        .addTo(map);
+
+    var marker = new mapboxgl.Marker({
+            color: "#e60000"
+        })
+        .setLngLat([72.136230, 22.309425])
+        .addTo(map);
+
+    var marker = new mapboxgl.Marker({
+            color: "#e60000"
+        })
+        .setLngLat([87.747803, 22.978624])
+        .addTo(map);
+
+    var marker = new mapboxgl.Marker({
+            color: "#e60000"
+        })
+        .setLngLat([79.208824, 17.123184])
+        .addTo(map);
+
+    var marker = new mapboxgl.Marker({
+            color: "#e60000"
+        })
+        .setLngLat([73.432617, 27.391277])
+        .addTo(map);
+    var marker = new mapboxgl.Marker({
+            color: "#e60000"
+        })
+        .setLngLat([92.537842, 26.244156])
+        .addTo(map);
+
+    var marker = new mapboxgl.Marker({
+            color: "#e60000"
+        })
+        .setLngLat([84.803467, 20.940920])
+        .addTo(map);
+
+    var marker = new mapboxgl.Marker({
+            color: "#e60000"
+        })
+        .setLngLat([76.040497, 29.065773])
+        .addTo(map);
+
+
+    var marker = new mapboxgl.Marker({
+            color: "#e60000"
+        })
+        .setLngLat([77.947998, 23.473324])
+        .addTo(map);
+
+    var marker = new mapboxgl.Marker({
+            color: "#e60000"
+        })
+        .setLngLat([76.271080, 10.850516])
+        .addTo(map);
+
+    var marker = new mapboxgl.Marker({
+            color: "#e60000"
+        })
+        .setLngLat([75.857277, 30.900965])
+        .addTo(map);
+
+    var marker = new mapboxgl.Marker({
+            color: "#e60000"
+        })
+        .setLngLat([76.24, 33.45])
+        .addTo(map);
+
+    var marker = new mapboxgl.Marker({
+            color: "#e60000"
+        })
+        .setLngLat([85.279935, 23.610181])
+        .addTo(map);
+
+    var marker = new mapboxgl.Marker({
+            color: "#e60000"
+        })
+        .setLngLat([81.6, 21.27])
+        .addTo(map);
+
+    var marker = new mapboxgl.Marker({
+            color: "#e60000"
+        })
+        .setLngLat([79.463570, 29.380304])
+        .addTo(map);
+
+    var marker = new mapboxgl.Marker({
+            color: "#e60000"
+        })
+        .setLngLat([74.12399600000003, 15.2993265])
+        .addTo(map);
+
+    var marker = new mapboxgl.Marker({
+            color: "#e60000"
+        })
+        .setLngLat([77.348045, 11.110695])
+        .addTo(map);
+
+    var marker = new mapboxgl.Marker({
+            color: "#e60000"
+        })
+        .setLngLat([79.82979, 11.93381])
+        .addTo(map);
+
+    var marker = new mapboxgl.Marker({
+            color: "#e60000"
+        })
+        .setLngLat([93.95, 24.817])
+        .addTo(map);
+
+    var marker = new mapboxgl.Marker({
+            color: "#e60000"
+        })
+        .setLngLat([77.571167, 32.084206])
+        .addTo(map);
+
+
+    var marker = new mapboxgl.Marker({
+            color: "#e60000"
+        })
+        .setLngLat([94.258972, 26.091036])
+        .addTo(map);
+
+
+    var marker = new mapboxgl.Marker({
+            color: "#e60000"
+        })
+        .setLngLat([93.827370, 27.095158])
+        .addTo(map);
+
+    var marker = new mapboxgl.Marker({
+            color: "#e60000"
+        })
+        .setLngLat([92.726486, 11.623377])
+        .addTo(map);
+
+    var marker = new mapboxgl.Marker({
+            color: "#e60000"
+        })
+        .setLngLat([78.000000, 34.000000])
+        .addTo(map);
+
+    var marker = new mapboxgl.Marker({
+            color: "#e60000"
+        })
+        .setLngLat([76.768066, 30.741482])
+        .addTo(map);
+
+
+    var marker = new mapboxgl.Marker({
+            color: "#e60000"
+        })
+        .setLngLat([90.592392, 25.532200])
+        .addTo(map);
+
+    var marker = new mapboxgl.Marker({
+            color: "#e60000"
+        })
+        .setLngLat([88.512218, 27.532972])
+        .addTo(map);
+
+    var marker = new mapboxgl.Marker({
+            color: "#e60000"
+        })
+        .setLngLat([92.717636, 23.727106])
+        .addTo(map);
+
+    var marker = new mapboxgl.Marker({
+            color: "#e60000"
+        })
+        .setLngLat([72.1833, 13.7000])
+        .addTo(map);
+
+    var marker = new mapboxgl.Marker({
+            color: "#e60000"
+        })
+        .setLngLat([87.51286, 26.12181])
+        .addTo(map);
+
+</script>
+
+
+
+
+
+
+
+
+
+
+</html>

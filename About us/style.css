@@ -1,0 +1,106 @@
+body{
+    margin: 0;
+    padding: 10px;
+    background-image:url("back.jpg");
+    font-family: sans-serif;
+}
+
+.alert {
+    position: relative;
+    margin-top: 10px;
+    padding: 3px;
+    background-color: block;
+    color:whitesmoke;
+    text-align: center;
+    font-size: xx-large;
+  }
+  
+
+.container{
+    position: relative;
+    width: 1280px;
+    margin: 10px auto 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.container .box{
+    position: relative;
+    width: 250px;
+    height: 250px;
+    
+    background: #262626;
+    margin: auto;
+    box-sizing: border-box;
+    display:inline-block;
+}
+img{
+    width: 250px;
+    height: 250px;
+    border-radius: 5%;
+}
+.container .box .imgbox{
+    position: relative;
+    overflow: hidden;
+}
+.container .box .imgbox img{
+    max-width: 100%;
+    transition: transform 2s;
+}
+.container .box:hover .imgbox img{
+    transform: scale(1.2);
+}
+.container .box .details{
+    position: absolute;
+    top:10px;
+    left: 10px;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(0,0,0,.8);
+    transform: scaleY(0);
+    transition: transform .5s;
+}
+.container .box:hover .details{
+    transform: scaleY(1);
+
+}
+.container .box .details .content{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    padding: 15px;
+    color: #fff;
+}
+.container .box .details .content h4{
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    color: blue;
+}
+.container .box .details .content p{
+    font-size: x-small;
+    margin: 10px 0 0;
+    padding: 0;
+    
+}
+@media only screen and (max-width:600px){
+    .alert,.container,.imgbox {
+     width: 100%;
+    }
+}
+@media only screen and (max-width:768px){
+    .alert,.container,.imgbox {
+     width: 100%;
+    }
+}
+@media only screen and (max-width:992px){
+    .alert,.container,.imgbox {
+     width: 100%;
+    }
+}
+@media only screen and (max-width:1100px){
+    .alert,.container,.imgbox {
+     width: 100%;
+    }
+}
